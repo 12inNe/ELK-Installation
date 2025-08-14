@@ -18,3 +18,7 @@ autorefresh=1
 type=rpm-md
 EOF
 ```
+Then Install Elasticsearch
+```bash
+sudo dnf install --enablerepo=elasticsearch elasticsearch
+```
