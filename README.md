@@ -62,3 +62,23 @@ sudo cp /etc/elasticsearch/certs/http_ca.crt /tmp/http_ca.crt
 sudo chmod 644 /tmp/http_ca.crt
 curl --cacert /tmp/http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
 ```
+### Example Output
+```bash
+{
+  "name" : "node-1",
+  "cluster_name" : "elasticsearch-demo",
+  "cluster_uuid" : "eBiwxTIHRe2Ql11XD2qkzA",
+  "version" : {
+    "number" : "9.1.2",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "ca1a70216fbdefbef3c65b1dff04903ea5964ef5",
+    "build_date" : "2025-08-11T15:04:41.449624592Z",
+    "build_snapshot" : false,
+    "lucene_version" : "10.2.2",
+    "minimum_wire_compatibility_version" : "8.19.0",
+    "minimum_index_compatibility_version" : "8.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
