@@ -14,3 +14,13 @@ sha512sum -c elasticsearch-9.1.2-linux-x86_64.tar.gz.sha512
 tar -xzf elasticsearch-9.1.2-linux-x86_64.tar.gz
 cd elasticsearch-9.1.2/
 ```
+### 1.3 Edit the 1st-node(master) yml for creating cluster  
+Setting like this [Master-node](https://github.com/12inNe/ELK-Installation/blob/main/Master-Hot/elasticsearch.yml) execpt security part
+After that run 
+```bash
+./bin/elasticsearch
+```
+You will get the .cert and security config after the cluster starts. Also, it will show the password and other Tokens for Setup
+
+### 1.4 Add other node in cluster  
+
