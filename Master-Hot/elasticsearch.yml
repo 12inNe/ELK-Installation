@@ -31,11 +31,11 @@ node.roles: [ master, data_content, data_hot, ingest, ml, remote_cluster_client 
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-#path.data: /path/to/data
+path.data: ./hot-node/data
 #
 # Path to log files:
 #
-#path.logs: /path/to/logs
+path.logs: ./hot-node/logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -63,16 +63,18 @@ http.port: 9200
 #
 # For more information, consult the network module documentation.
 #
+transport.host: 10.0.2.15
+transport.port: 9300
 # --------------------------------- Discovery ----------------------------------
 #
 # Pass an initial list of hosts to perform discovery when this node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.seed_hosts: ["10.0.2.15:9300"]
+discovery.seed_hosts: ["10.0.2.15"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
-#cluster.initial_master_nodes: ["node-master-hot"]
+cluster.initial_master_nodes: ["node-master-hot"]
 #
 # For more information, consult the discovery and cluster formation module documentation.
 #
