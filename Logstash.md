@@ -59,7 +59,7 @@ output {
   path.config: "./pipeline.conf"
 ```
 
-### 2.3 Add api ip and port
+### 2.3 Add api ip and port (For Metricbeat)
 ```yml
 api.enabled: true
 api.http.host: 10.0.2.15
