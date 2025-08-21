@@ -59,7 +59,14 @@ output {
   path.config: "./pipeline.conf"
 ```
 
-### 2.3 Use keystore to store sensitive data like elasticsearch username and password
+### 2.3 Add api ip and port
+```yml
+api.enabled: true
+api.http.host: 10.0.2.15
+api.http.port: 9600
+```
+
+### Extra | Use keystore to store sensitive data like elasticsearch username and password
 
 ### Start Logstash Command
 ```bash
