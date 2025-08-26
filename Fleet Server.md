@@ -22,8 +22,8 @@ tar xzvf elastic-agent-9.1.2-linux-x86_64.tar.gz
 
 ### 2.1 Generate CA and Fleet Server certificate signed by that CA
 ```bash
-./bin/elasticsearch-certutil ca
-./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
+./bin/elasticsearch-certutil ca --pem
+unzip elastic-stack-ca.zip
 ```
 
 ### 2.2 Export as PEM files and extract it
