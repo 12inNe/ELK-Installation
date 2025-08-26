@@ -68,6 +68,6 @@ sudo systemctl status elasticsearch
 sudo journalctl -u elasticsearch.service
 ```
 
-# Step 6. Set up the password and check the status
+# Step 6. Open Kibana
 Open Kibana via [http://10.143.120.98:5601/](http://10.143.120.98:5601/)
 
