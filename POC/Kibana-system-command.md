@@ -40,7 +40,7 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 ```
 # Step 3. Edit .yml files
-## [Example .yml config](https://github.com/12inNe/ELK-Installation/blob/main/POC/elasticsearch.yml)
+## [Example .yml config](https://github.com/12inNe/ELK-Installation/blob/main/POC/kibana.yml)
 
 # Step 4. Enrol Kiban in Elasticsearch
 ```
