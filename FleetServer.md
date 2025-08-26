@@ -15,7 +15,7 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-ag
 ```bash
 tar xzvf elastic-agent-9.1.2-linux-x86_64.tar.gz
 cd elastic-agent-9.1.2-linux-x86_64
-sudo ./elastic-agent install \
+sudo ./elastic-agent enroll \
   --fleet-server-es=https://10.0.2.15:9200 \
   --fleet-server-service-token=AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL3Rva2VuLTE3NTU3NzAzOTg0MjY6NkJuV2VEZTNUaHkzTEZjY2o5WXhkUQ \
   --fleet-server-policy=fleet-server-policy \
