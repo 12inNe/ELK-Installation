@@ -46,7 +46,7 @@ sudo ./elastic-agent enroll \
   --fleet-server-port=8220
 ```
 
-### 2.4 Run
+### 2.4 Run Fleet Server
 ```bash
 sudo ./elastic-agent run
 ```
