@@ -69,11 +69,5 @@ sudo journalctl -u elasticsearch.service
 ```
 
 # Step 6. Set up the password and check the status
-```
-sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
-export ELASTIC_PASSWORD="your_password"
+Open Kibana via [http://10.143.120.98:5601/](http://10.143.120.98:5601/)
 
-curl --cacert /etc/elasticsearch/certs/http_ca.crt \
-     -u elastic:$ELASTIC_PASSWORD \
-     https://10.143.120.98:9200
-```
