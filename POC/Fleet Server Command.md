@@ -49,7 +49,8 @@ Put the 3 final lines in kibana.yml then restart Kibana Service
 ## Step 4
 #### Connect to Fleet Server via Kibana UI
 
-
+## Step 5
+#### Click Fleet and add Integration then Config and Add
 
 
 
