@@ -9,19 +9,19 @@ sudo chown -R ubuntuadm:ubuntuadm /etc/logstash /usr/share/logstash /var/lib/log
 ```
 
 # Step 2. Create service files
-``` sudo nano /etc/systemd/system/kibana.service ```
+``` sudo nano /etc/systemd/system/logstash.service ```
 And write these configs
 ```yaml
 [Unit]
-Description=Kibana
-After=network.target
+Description=Logstash
+After=network.target elasticsearch.service
 
 [Service]
 Type=simple
 User=ubuntuadm
 Group=ubuntuadm
-Environment=KIBANA_HOME=/usr/share/kibana
-ExecStart=/usr/share/kibana/bin/kibana -c /etc/kibana/kibana.yml
+Environment=JAVA_HOME=/usr/share/logstash/jdk
+ExecStart=/usr/share/logstash/bin/logstash --path.settings /etc/logstash
 Restart=on-failure
 LimitNOFILE=65536
 
@@ -29,33 +29,58 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 ```
 # Step 3. Edit .yml files
-## [Example .yml config](https://github.com/12inNe/ELK-Installation/blob/main/POC/kibana.yml)
-
-# Step 4. Enrol Kiban in Elasticsearch
+## Add these lines
+```yaml
+path.data: /var/lib/logstash
+path.logs: /var/log/logstash
+pipeline.ordered: auto
 ```
-sudo ES_PATH_CONF=/etc/elasticsearch /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
-eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTAuMTQzLjEyMC45ODo5MjAwIl0sImZnciI6ImY4MzBhMGY4NGI3NjEwZjYxZDA1YjhjNzZjMzcxYzM2ZDY3ZWFkNDI3YjRlNWJhZTU4YmJjOTJiOTJjMzAzNDMiLCJrZXkiOiJzd3NsNVpnQlc0SFhFRTJnckNIYTpCS0JJcm1JT0dLdjdZQ1lnSlJoSlF3In0=
+# Step 4. Create pipeline files for testing
+## etc/logstash/pipeline.conf 
+```yaml
+input {
+  file {
+    path => "/var/log/elasticsearch/*.log"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"
+  }
+}
 
-sudo /usr/share/kibana/bin/kibana-setup --enrollment-token
-eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTAuMTQzLjEyMC45ODo5MjAwIl0sImZnciI6ImY4MzBhMGY4NGI3NjEwZjYxZDA1YjhjNzZjMzcxYzM2ZDY3ZWFkNDI3YjRlNWJhZTU4YmJjOTJiOTJjMzAzNDMiLCJrZXkiOiJzd3NsNVpnQlc0SFhFRTJnckNIYTpCS0JJcm1JT0dLdjdZQ1lnSlJoSlF3In0=
-```
-## Result
-```
-Native global console methods have been overridden in production environment.
+filter {
+  mutate {
+    add_field => {
+      "log_type" => "elasticsearch"
+      "service" => "elasticsearch"
+    }
+  }
+}
 
-✔ Kibana configured successfully.
-
-To start Kibana run:
-  bin/kibana
+output {
+  elasticsearch {
+    hosts => ["https://10.143.120.98:9200"]
+    user => "elastic"
+    password => "El@st1c"
+    ssl_certificate_authorities => ["/etc/elasticsearch/certs/http_ca.crt"]
+    ssl_verification_mode => "full"
+    index => "log-test-%{+YYYY.MM.dd}"
+  }
+  stdout { codec => rubydebug }
+}
 ```
+## Test pipeline config
+```
+/usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+```
+Should get
+OK result
+
 # Step 5. run services
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch
-sudo systemctl start elasticsearch
-sudo systemctl status elasticsearch
-sudo journalctl -u elasticsearch.service
+sudo systemctl enable logstash
+sudo systemctl start logstash
+sudo systemctl status logstash
+sudo journalctl -u logstash.service
 ```
 
-# Step 6. Open Kibana
-Open Kibana via [http://10.143.120.98:5601/](http://10.143.120.98:5601/)
+# Step 6. Open Kibana and test the index and log creation
