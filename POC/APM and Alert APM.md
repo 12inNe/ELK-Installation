@@ -482,40 +482,45 @@
 ## Step 4
 #### In [Obervability -> Alert] pages will be nothing at first, because there is no rule to be alert, click Manage Rule.
 
-#### If xpack excryption didn't set now, Rule can't be create, so Generate Encryption Key in Kibana.
-```bash
-/usr/share/kibana/bin/kibana-encryption-keys generate
-```
-
-#### Output should be like this
-```bash
-## Kibana Encryption Key Generation Utility
-
-The 'generate' command guides you through the process of setting encryption keys for:
-
-xpack.encryptedSavedObjects.encryptionKey
-    Used to encrypt stored objects such as dashboards and visualizations
-    https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html#xpack-security-secure-saved-objects
-
-xpack.reporting.encryptionKey
-    Used to encrypt saved reports
-    https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#general-reporting-settings
-
-xpack.security.encryptionKey
-    Used to encrypt session information
-    https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-session-and-cookie-settings
-
-
-Already defined settings are ignored and can be regenerated using the --force flag.  Check the documentation links for instructions on how to rotate encryption keys.
-Definitions should be set in the kibana.yml used configure Kibana.
-
-Settings:
-xpack.encryptedSavedObjects.encryptionKey: c89682cb740d28a00ecbbf31928d48db
-xpack.reporting.encryptionKey: 979d5d60a3ea570fb1b62395464def93
-xpack.security.encryptionKey: 2b73583647548cff71818d0fe7369d96
-```
-
-Put the 3 final lines in kibana.yml then restart Kibana Service.
+---
+<details>
+  <summary>Create rules not allowed?</summary>
+  
+  ##### Create rules won't allowed if Kibana didn't have encryption xpack, so you will have to generate them first.
+  ```bash
+  /usr/share/kibana/bin/kibana-encryption-keys generate
+  ```
+  
+  ##### Output should be like this
+  ```bash
+  ## Kibana Encryption Key Generation Utility
+  
+  The 'generate' command guides you through the process of setting encryption keys for:
+  
+  xpack.encryptedSavedObjects.encryptionKey
+      Used to encrypt stored objects such as dashboards and visualizations
+      https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html#xpack-security-secure-saved-objects
+  
+  xpack.reporting.encryptionKey
+      Used to encrypt saved reports
+      https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#general-reporting-settings
+  
+  xpack.security.encryptionKey
+      Used to encrypt session information
+      https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-session-and-cookie-settings
+  
+  
+  Already defined settings are ignored and can be regenerated using the --force flag.  Check the documentation links for instructions on how to rotate encryption keys.
+  Definitions should be set in the kibana.yml used configure Kibana.
+  
+  Settings:
+  xpack.encryptedSavedObjects.encryptionKey: c89682cb740d28a00ecbbf31928d48db
+  xpack.reporting.encryptionKey: 979d5d60a3ea570fb1b62395464def93
+  xpack.security.encryptionKey: 2b73583647548cff71818d0fe7369d96
+  ```
+  
+  ##### Put the 3 final lines in kibana.yml then restart Kibana Service.
+</details>
 
 ## Step 5
 #### Select what rule will be create, this time we will choose APM Error Alerting, Then basic Setup.
