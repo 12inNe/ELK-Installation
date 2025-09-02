@@ -27,4 +27,9 @@
 ## TCP
 ###### Monitor the services running on your hosts. The TCP monitor checks individual portsto make sure the service is accessible and running.
 
-### 1. 
+### 1. Open [Kibana UI] -> [Observability] -> [Synthetic Monitoring] -> [Create Monitor] -> [Select TCP Ping]
+
+### 2. Setup HOST:PORT like this
+
+<img width="1629" height="801" alt="image" src="https://github.com/user-attachments/assets/e7363e03-72f4-41c4-83f3-e9cc316a99bb" />
+
