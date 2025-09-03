@@ -2,19 +2,21 @@
 
 ## Installation Steps ([Reference](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-installation-configuration))
 
+---
+
 ### 1.1 Get the Filebeat package on a Host (This step require Internet, Skip this if host already have the package)
 
 ```bash
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.1.2-linux-x86_64.tar.gz
 ```
 
----
-
 ### 1.2 Unzip the Elastic Agent package and Install as Fleet Server on Airgap-Server
 ```bash
 sudo mkdir -p /usr/share/filebeat-9.1.2
 sudo tar xzvf filebeat-9.1.2-linux-x86_64.tar.gz -C /usr/share/filebeat-9.1.2 --strip-components=1
 ```
+
+---
 
 ### 2.1 Add Keystore for sensitive value
 
@@ -98,6 +100,8 @@ elasticsearch: https://10.143.120.98:9200/...
   talk to server... OK
   version: 9.1.2
 ```
+
+---
 
 ### 3.1 Setup service
 ```bash
