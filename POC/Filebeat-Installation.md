@@ -46,7 +46,7 @@ filebeat.config.modules:
   reload.enabled: false
 
 output.elasticsearch:
-  hosts: ["https://<ELASTIC_IP>:9200"]
+  hosts: ["https://10.143.120.98:9200"]
   preset: balanced
   protocol: "https"
   username: "${elasticsearch.username}"
