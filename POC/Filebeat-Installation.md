@@ -12,24 +12,24 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.1.2-
 
 ### 1.2 Unzip the Elastic Agent package and Install as Fleet Server on Airgap-Server
 ```bash
-tar xzvf filebeat-9.1.2-linux-x86_64.tar.gz
-cd filebeat-9.1.2-linux-x86_64/
+sudo mkdir -p /usr/share/filebeat-9.1.2
+sudo tar xzvf filebeat-9.1.2-linux-x86_64.tar.gz -C /usr/share/filebeat-9.1.2 --strip-components=1
 ```
 
 ### 2.1 Add Keystore for sensitive value
 
 ```bash
-./filebeat keystore add elasticsearch.username
+/usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.username
 ```
 
 ```bash
-./filebeat keystore add elasticsearch.password
+/usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.password
 ```
 
 ### 2.2 Configuration filebeat.yml
 
 ```bash
-nano filebeat.yml
+nano /usr/share/filebeat-9.1.2/filebeat.yml
 ```
 
 ```yaml
@@ -41,7 +41,7 @@ filebeat.inputs:
     - /path/to/syslog
 
 filebeat.config.modules:
-  path: ${path.config}/modules.d/*.yml
+  path: /usr/share/filebeat-9.1.2/modules.d/*.yml
 
   reload.enabled: false
 
@@ -68,7 +68,7 @@ processors:
 sudo nano /etc/systemd/system/filebeat.service
 ```
 
-```yml
+```service
 [Unit]
 Description=Filebeat
 Documentation=https://www.elastic.co/beats/filebeat
@@ -77,10 +77,10 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=user
-Group=user-group
-WorkingDirectory=/filebeat/downloaded/path/filebeat-9.1.2-linux-x86_64
-ExecStart=/filebeat/downloaded/path/filebeat-9.1.2-linux-x86_64/filebeat -e
+User=YOUR_USER
+Group=YOUR_USER_GROUP
+WorkingDirectory=/usr/share/filebeat-9.1.2/
+ExecStart=/usr/share/filebeat-9.1.2/filebeat -e
 Restart=always
 TimeoutStopSec=20
 LimitNOFILE=262144
