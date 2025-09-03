@@ -77,19 +77,19 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=pichanmet
-Group=pichanmet
-WorkingDirectory=/home/pichanmet/filebeat-9.1.2-linux-x86_64
-ExecStart=/home/pichanmet/filebeat-9.1.2-linux-x86_64/filebeat -e
+User=user
+Group=user-group
+WorkingDirectory=/filebeat/downloaded/path/filebeat-9.1.2-linux-x86_64
+ExecStart=/filebeat/downloaded/path/filebeat-9.1.2-linux-x86_64/filebeat -e
 Restart=always
 TimeoutStopSec=20
 LimitNOFILE=262144
 PrivateTmp=true
-
-# Optional: ให้ journal เก็บ log
 StandardOutput=journal
 StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+###### Beware permission
