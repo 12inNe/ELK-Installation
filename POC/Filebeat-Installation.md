@@ -63,6 +63,11 @@ processors:
   - add_kubernetes_metadata: ~
 ```
 
+### 2.3 Test Config
+```bash
+sudo /usr/share/filebeat-9.1.2/filebeat test config -c /usr/share/filebeat-9.1.2/filebeat.yml
+```
+
 ### 3.1 Setup service
 ```bash
 sudo nano /etc/systemd/system/filebeat.service
