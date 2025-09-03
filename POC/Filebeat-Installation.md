@@ -104,6 +104,15 @@ elasticsearch: https://10.143.120.98:9200/...
   version: 9.1.2
 ```
 
+### 2.4 Change Permission for each file
+
+```bash
+sudo chown -R $USER:$USER /usr/share/filebeat-9.1.2/data
+sudo chown $USER:$USER /usr/share/filebeat-9.1.2/filebeat.yml
+sudo chmod 600 /usr/share/filebeat-9.1.2/data/filebeat.keystore
+sudo chmod 750 /usr/share/filebeat-9.1.2/data
+```
+
 ---
 
 ### 3.1 Setup service
