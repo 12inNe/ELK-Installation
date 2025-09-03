@@ -19,7 +19,7 @@ sudo tar xzvf filebeat-9.1.2-linux-x86_64.tar.gz -C /usr/share/filebeat-9.1.2 --
 ---
 
 ### 2.1 Add Keystore for sensitive value
-
+Run these commands line by line. After running command, there will be a field to write username and password for elasticsearch. 
 ```bash
 sudo /usr/share/filebeat-9.1.2/filebeat -c /usr/share/filebeat-9.1.2/filebeat.yml keystore add elasticsearch.username
 ```
