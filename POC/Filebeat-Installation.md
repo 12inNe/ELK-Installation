@@ -62,3 +62,34 @@ processors:
   - add_docker_metadata: ~
   - add_kubernetes_metadata: ~
 ```
+
+### 3 Setup service
+```bash
+sudo nano /etc/systemd/system/filebeat.service
+```
+
+```yml
+[Unit]
+Description=Filebeat
+Documentation=https://www.elastic.co/beats/filebeat
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pichanmet
+Group=pichanmet
+WorkingDirectory=/home/pichanmet/filebeat-9.1.2-linux-x86_64
+ExecStart=/home/pichanmet/filebeat-9.1.2-linux-x86_64/filebeat -e
+Restart=always
+TimeoutStopSec=20
+LimitNOFILE=262144
+PrivateTmp=true
+
+# Optional: ให้ journal เก็บ log
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
