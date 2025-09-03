@@ -19,17 +19,17 @@ sudo tar xzvf filebeat-9.1.2-linux-x86_64.tar.gz -C /usr/share/filebeat-9.1.2 --
 ### 2.1 Add Keystore for sensitive value
 
 ```bash
-/usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.username
+sudo /usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.username
 ```
 
 ```bash
-/usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.password
+sudo /usr/share/filebeat-9.1.2/filebeat keystore add elasticsearch.password
 ```
 
 ### 2.2 Configuration filebeat.yml
 
 ```bash
-nano /usr/share/filebeat-9.1.2/filebeat.yml
+sudo nano /usr/share/filebeat-9.1.2/filebeat.yml
 ```
 
 ```yaml
