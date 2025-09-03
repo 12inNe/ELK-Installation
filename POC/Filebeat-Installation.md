@@ -63,9 +63,38 @@ processors:
   - add_kubernetes_metadata: ~
 ```
 
-### 2.3 Test Config
+### 2.3 Test Config and Output
 ```bash
 sudo /usr/share/filebeat-9.1.2/filebeat test config -c /usr/share/filebeat-9.1.2/filebeat.yml
+```
+
+The output should be like this.
+
+```bash
+Config OK
+```
+
+```bash
+sudo /usr/share/filebeat-9.1.2/filebeat test output -c /usr/share/filebeat-9.1.2/filebeat.yml
+```
+
+The output should be like this.
+
+```bash
+elasticsearch: https://10.143.120.98:9200/...
+  parse url... OK
+  connection...
+    parse host... OK
+    dns lookup... OK
+    addresses: 10.143.120.98
+    dial up... OK
+  TLS...
+    security: server's certificate chain verification is enabled
+    handshake... OK
+    TLS version: TLSv1.3
+    dial up... OK
+  talk to server... OK
+  version: 9.1.2
 ```
 
 ### 3.1 Setup service
