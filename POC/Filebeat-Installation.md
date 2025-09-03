@@ -63,7 +63,7 @@ processors:
   - add_kubernetes_metadata: ~
 ```
 
-### 3 Setup service
+### 3.1 Setup service
 ```bash
 sudo nano /etc/systemd/system/filebeat.service
 ```
@@ -91,5 +91,9 @@ StandardError=journal
 [Install]
 WantedBy=multi-user.target
 ```
-
 ###### Beware permission
+
+### 3.2 Start Filebeat as a service
+```bash
+systemctl status filebeat.service
+```
