@@ -64,6 +64,7 @@ processors:
 ```
 
 ### 2.3 Test Config and Output
+Test Config Command.
 ```bash
 sudo /usr/share/filebeat-9.1.2/filebeat test config -c /usr/share/filebeat-9.1.2/filebeat.yml
 ```
@@ -74,6 +75,7 @@ The output should be like this.
 Config OK
 ```
 
+Test Output Command.
 ```bash
 sudo /usr/share/filebeat-9.1.2/filebeat test output -c /usr/share/filebeat-9.1.2/filebeat.yml
 ```
