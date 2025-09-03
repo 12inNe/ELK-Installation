@@ -95,5 +95,5 @@ WantedBy=multi-user.target
 
 ### 3.2 Start Filebeat as a service
 ```bash
-systemctl status filebeat.service
+systemctl start filebeat.service
 ```
