@@ -136,6 +136,10 @@ WantedBy=multi-user.target
 ```
 ###### Beware permission
 
+```bash
+sudo systemctl daemon-reload
+```
+
 ### 3.2 Start Filebeat as a service
 ```bash
 systemctl start filebeat.service
