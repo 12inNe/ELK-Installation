@@ -7,7 +7,7 @@ $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.1.2-windows-x86_64.zip -OutFile elastic-agent-9.1.2-windows-x86_64.zip 
 Expand-Archive .\elastic-agent-9.1.2-windows-x86_64.zip -DestinationPath .
 cd elastic-agent-9.1.2-windows-x86_64
-.\elastic-agent.exe install --url=http://10.143.120.98:8220 --insecure --enrollment-token=Put token from Token List here
+.\elastic-agent.exe install --url=https://10.143.120.98:8220 --insecure --enrollment-token=Put token from Token List here
 ```
 
 Token List :
